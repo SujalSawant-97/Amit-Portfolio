@@ -84,6 +84,18 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   const updateCardTransforms = useCallback(() => {
     if (!cardsRef.current.length || isUpdatingRef.current) return;
 
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    if (isMobile) {
+      // On mobile, let native smooth CSS layout handle the cards with zero lag
+      cardsRef.current.forEach((card) => {
+        if (card) {
+          card.style.transform = '';
+          card.style.filter = '';
+        }
+      });
+      return;
+    }
+
     isUpdatingRef.current = true;
 
     const { scrollTop, containerHeight } = getScrollData();
@@ -195,12 +207,17 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   }, [updateCardTransforms]);
 
   const setupLenis = useCallback(() => {
+    // Only enable Lenis smooth scrolling on desktop to prevent mobile touch interference
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      return null;
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 2,
+      touchMultiplier: 1,
       infinite: false,
     });
 
@@ -217,6 +234,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   }, [handleScroll]);
 
   useLayoutEffect(() => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
     const cards = Array.from(
       document.querySelectorAll('.scroll-stack-card')
     ) as HTMLElement[];
@@ -232,19 +250,43 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     cards.forEach((card, i) => {
       card.style.zIndex = `${i + 1}`;
       if (i < cards.length - 1) {
-        card.style.marginBottom = `${itemDistance}px`;
+        card.style.marginBottom = isMobile ? '24px' : `${itemDistance}px`;
       }
-      card.style.willChange = 'transform, filter';
-      card.style.transformOrigin = 'top center';
-      card.style.backfaceVisibility = 'hidden';
-      card.style.transform = 'translateZ(0)';
-      card.style.perspective = '1000px';
+      if (!isMobile) {
+        card.style.willChange = 'transform, filter';
+        card.style.transformOrigin = 'top center';
+        card.style.backfaceVisibility = 'hidden';
+        card.style.transform = 'translateZ(0)';
+        card.style.perspective = '1000px';
+      } else {
+        card.style.willChange = 'auto';
+        card.style.transform = '';
+        card.style.filter = '';
+      }
     });
 
-    setupLenis();
-    updateCardTransforms();
+    if (!isMobile) {
+      setupLenis();
+      updateCardTransforms();
+    }
+
+    const handleResize = () => {
+      if (typeof window !== 'undefined') {
+        const currentlyMobile = window.innerWidth < 768;
+        if (currentlyMobile && lenisRef.current) {
+          lenisRef.current.destroy();
+          lenisRef.current = null;
+        }
+        updateCardTransforms();
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
@@ -270,6 +312,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     onStackComplete,
     setupLenis,
     updateCardTransforms,
+    handleScroll,
   ]);
 
   return (

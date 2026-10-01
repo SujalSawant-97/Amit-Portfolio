@@ -14,12 +14,12 @@ export const ContactSection: React.FC = () => {
   return (
     <footer
       id="contact"
-      className="relative w-full bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black pt-16 pb-16 px-6 sm:px-12 lg:px-20 overflow-hidden"
+      className="relative w-full bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black pt-12 sm:pt-16 pb-12 sm:pb-16 px-4 sm:px-12 lg:px-20 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto w-full relative z-10">
         
         {/* Split Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           
           {/* Left Column (5 Cols) */}
           <div className="lg:col-span-5 flex flex-col justify-between">
@@ -30,7 +30,7 @@ export const ContactSection: React.FC = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="flex items-center space-x-4 mb-5"
+                className="flex items-center space-x-4 mb-4 sm:mb-5"
               >
                 <span
                   className="text-[11px] font-medium tracking-[0.35em] uppercase text-[#D4AF37]"
@@ -47,10 +47,10 @@ export const ContactSection: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="mb-8"
+                className="mb-6 sm:mb-8"
               >
                 <h2
-                  className="text-5xl sm:text-6xl md:text-7xl tracking-tight uppercase leading-[0.85] select-none"
+                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight uppercase leading-[0.9] sm:leading-[0.85] select-none break-words"
                   style={{ fontFamily: "'Bebas Neue', sans-serif" }}
                 >
                   <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#FFFFFF] via-[#D5CBC0] to-[#605448] drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
@@ -63,34 +63,34 @@ export const ContactSection: React.FC = () => {
               </motion.div>
 
               <p
-                className="text-xs sm:text-[13px] font-light text-[#A8988B] leading-relaxed max-w-md mb-8"
+                className="text-xs sm:text-[13px] font-light text-[#A8988B] leading-relaxed max-w-md mb-6 sm:mb-8"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
                 Looking for an experienced Content Strategist, Creator Ecosystem Lead, or Media Operations specialist? Send a direct dispatch below or reach out directly.
               </p>
 
               {/* Direct Info List */}
-              <div className="space-y-4 pt-4 border-t border-[#8C6D4F]/25 text-xs font-light text-[#D5CBC0]">
+              <div className="space-y-3 sm:space-y-4 pt-4 border-t border-[#8C6D4F]/25 text-xs font-light text-[#D5CBC0]">
                 <div className="flex items-center space-x-3">
-                  <span className="text-[#D4AF37] font-mono text-[10px] uppercase tracking-widest w-20">EMAIL:</span>
-                  <a href="mailto:Kalokheameet@gmail.com" className="hover:text-[#D4AF37] transition-colors">
+                  <span className="text-[#D4AF37] font-mono text-[9.5px] sm:text-[10px] uppercase tracking-widest w-20">EMAIL:</span>
+                  <a href="mailto:Kalokheameet@gmail.com" className="hover:text-[#D4AF37] transition-colors break-all">
                     Kalokheameet@gmail.com
                   </a>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <span className="text-[#D4AF37] font-mono text-[10px] uppercase tracking-widest w-20">PHONE:</span>
+                  <span className="text-[#D4AF37] font-mono text-[9.5px] sm:text-[10px] uppercase tracking-widest w-20">PHONE:</span>
                   <a href="tel:+918805909809" className="hover:text-[#D4AF37] transition-colors">
                     +91 8805909809
                   </a>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <span className="text-[#D4AF37] font-mono text-[10px] uppercase tracking-widest w-20 shrink-0 pt-0.5">LOCATION:</span>
+                  <span className="text-[#D4AF37] font-mono text-[9.5px] sm:text-[10px] uppercase tracking-widest w-20 shrink-0 pt-0.5">LOCATION:</span>
                   <span className="text-[#A8988B]">
                     Dehugaon, Tal- Haveli, Dist- Pune 412109
                   </span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <span className="text-[#D4AF37] font-mono text-[10px] uppercase tracking-widest w-20">LANGUAGES:</span>
+                  <span className="text-[#D4AF37] font-mono text-[9.5px] sm:text-[10px] uppercase tracking-widest w-20">LANGUAGES:</span>
                   <span className="text-[#A8988B]">
                     Marathi, Hindi, English
                   </span>
@@ -105,7 +105,7 @@ export const ContactSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-7 relative w-full rounded-sm border border-[#8C6D4F]/40 bg-[#0A0806] p-8 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.9)] overflow-hidden"
+            className="lg:col-span-7 relative w-full rounded-sm border border-[#8C6D4F]/40 bg-[#0A0806] p-5 sm:p-8 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.9)] overflow-hidden"
           >
             {/* Top Gold Horizon Edge */}
             <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/70 to-transparent" />

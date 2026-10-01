@@ -69,18 +69,18 @@ export const AboutSection: React.FC = () => {
   return (
     <section 
       id="about" 
-      className="relative w-screen min-h-screen bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black py-24 lg:py-32 px-6 sm:px-12 lg:px-20 overflow-hidden flex items-center"
+      className="relative w-full min-h-screen bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black py-16 sm:py-24 lg:py-32 px-4 sm:px-12 lg:px-20 overflow-hidden flex items-center"
     >
       {/* ================= BACKGROUND GLOWS & FLOATING PARTICLES ================= */}
       <motion.div 
         animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.16, 0.08] }}
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-1/4 left-1/6 w-[32rem] h-[32rem] bg-[#D4AF37] rounded-full blur-[160px] pointer-events-none"
+        className="absolute top-1/4 left-1/6 w-64 h-64 sm:w-[32rem] sm:h-[32rem] bg-[#D4AF37] rounded-full blur-[80px] sm:blur-[160px] pointer-events-none"
       />
       <motion.div 
         animate={{ scale: [1.2, 1, 1.2], opacity: [0.05, 0.12, 0.05] }}
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute bottom-1/6 right-1/4 w-[28rem] h-[28rem] bg-[#8C6D4F] rounded-full blur-[170px] pointer-events-none"
+        className="absolute bottom-1/6 right-1/4 w-60 h-60 sm:w-[28rem] sm:h-[28rem] bg-[#8C6D4F] rounded-full blur-[90px] sm:blur-[170px] pointer-events-none"
       />
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
@@ -91,7 +91,7 @@ export const AboutSection: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center space-x-4 mb-10"
+          className="flex items-center space-x-4 mb-6 sm:mb-10"
         >
           <span 
             className="text-[11px] font-medium tracking-[0.35em] uppercase text-[#D4AF37]"
@@ -103,7 +103,7 @@ export const AboutSection: React.FC = () => {
         </motion.div>
 
         {/* Main Grid: Content + Portrait */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
           {/* ================= LEFT CONTENT (7 COLS) ================= */}
           <motion.div
@@ -114,9 +114,9 @@ export const AboutSection: React.FC = () => {
             className="lg:col-span-7 flex flex-col justify-center"
           >
             {/* Cinematic Headline with Glow Flare */}
-            <motion.div variants={fadeUpVariants} className="relative mb-6 select-none">
+            <motion.div variants={fadeUpVariants} className="relative mb-5 sm:mb-6 select-none">
               <h2
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.4rem] tracking-tight uppercase leading-[0.88]"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-[5.4rem] tracking-tight uppercase leading-[0.9] sm:leading-[0.88]"
                 style={{ fontFamily: "'Bebas Neue', sans-serif" }}
               >
                 <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#FFFFFF] via-[#D5CBC0] to-[#605448] drop-shadow-[0_4px_10px_rgba(0,0,0,0.85)]">
@@ -131,7 +131,7 @@ export const AboutSection: React.FC = () => {
             {/* Concise Bio Paragraph */}
             <motion.p
               variants={fadeUpVariants}
-              className="text-xs sm:text-sm md:text-[14.5px] font-light text-[#B3A497] leading-[1.85] tracking-wide mb-10 max-w-xl"
+              className="text-xs sm:text-sm md:text-[14.5px] font-light text-[#B3A497] leading-[1.75] sm:leading-[1.85] tracking-wide mb-8 sm:mb-10 max-w-xl"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
               I'm <span className="text-[#F3DBB3] font-medium">Amit Kalokhe</span>, a Content Strategist and Media Professional with a Master's in Mass Communication &amp; Journalism from MIT-ISBJ, Pune. With 4.5+ years of experience across top platforms including Verse Innovation (JOSH), Trell, and ETV Bharat, I specialize in creator management, content moderation &amp; QA, community growth, and data-driven content campaigns.
@@ -140,17 +140,17 @@ export const AboutSection: React.FC = () => {
             {/* Concise 4-Item Achievement Metrics Grid */}
             <motion.div 
               variants={fadeUpVariants}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 pb-2 border-t border-[#8C6D4F]/25"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 pt-5 sm:pt-6 pb-2 border-t border-[#8C6D4F]/25"
             >
               {/* Stat 1 */}
               <div className="flex flex-col">
                 <span 
-                  className="text-3xl sm:text-4xl font-light text-[#F4EBE2] tracking-tight"
+                  className="text-2xl sm:text-3xl lg:text-4xl font-light text-[#F4EBE2] tracking-tight"
                   style={{ fontFamily: "'Bebas Neue', sans-serif" }}
                 >
                   4.5+
                 </span>
-                <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[#A8988B] mt-0.5">
+                <span className="text-[9px] sm:text-[10px] font-medium tracking-[0.2em] sm:tracking-[0.22em] uppercase text-[#A8988B] mt-0.5">
                   Years Experience
                 </span>
               </div>
@@ -158,25 +158,25 @@ export const AboutSection: React.FC = () => {
               {/* Stat 2 */}
               <div className="flex flex-col">
                 <span 
-                  className="text-3xl sm:text-4xl font-light text-[#D4AF37] tracking-tight"
+                  className="text-2xl sm:text-3xl lg:text-4xl font-light text-[#D4AF37] tracking-tight"
                   style={{ fontFamily: "'Bebas Neue', sans-serif" }}
                 >
                   3+
                 </span>
-                <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[#A8988B] mt-0.5">
-                  Top Media Platforms
+                <span className="text-[9px] sm:text-[10px] font-medium tracking-[0.2em] sm:tracking-[0.22em] uppercase text-[#A8988B] mt-0.5">
+                  Top Platforms
                 </span>
               </div>
 
               {/* Stat 3 */}
               <div className="flex flex-col">
                 <span 
-                  className="text-3xl sm:text-4xl font-light text-[#F4EBE2] tracking-tight"
+                  className="text-2xl sm:text-3xl lg:text-4xl font-light text-[#F4EBE2] tracking-tight"
                   style={{ fontFamily: "'Bebas Neue', sans-serif" }}
                 >
                   5+
                 </span>
-                <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[#A8988B] mt-0.5">
+                <span className="text-[9px] sm:text-[10px] font-medium tracking-[0.2em] sm:tracking-[0.22em] uppercase text-[#A8988B] mt-0.5">
                   Awards &amp; Honors
                 </span>
               </div>
@@ -184,12 +184,12 @@ export const AboutSection: React.FC = () => {
               {/* Stat 4 */}
               <div className="flex flex-col">
                 <span 
-                  className="text-3xl sm:text-4xl font-light text-[#D4AF37] tracking-tight"
+                  className="text-2xl sm:text-3xl lg:text-4xl font-light text-[#D4AF37] tracking-tight"
                   style={{ fontFamily: "'Bebas Neue', sans-serif" }}
                 >
                   Rank 1
                 </span>
-                <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[#A8988B] mt-0.5">
+                <span className="text-[9px] sm:text-[10px] font-medium tracking-[0.2em] sm:tracking-[0.22em] uppercase text-[#A8988B] mt-0.5">
                   Masters Rank Holder
                 </span>
               </div>
